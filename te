@@ -1,0 +1,24 @@
+        const key = `duckplays:users:${userId}`;
+        const existingUser = await redisClient.hGetAll(key);
+
+        if (Object.keys(existingUser).length === 0) {
+            await redisClient.hSet(key, {
+                userid: userId,
+                chatId: chatId, 
+                wagered: '0',
+                invites: '0',
+                totalbets: '0',
+                level: 'bronze',
+                lostbets: '0',
+                wonbets: '0',
+                inprofitorlossusd: '0',
+                bonusclaimedusd: '0',
+                invitedby: refCodeMatch ? refCodeMatch[1] : '',
+                ethbalance: '0.00000000',
+                bnbbalance: '0.00000000',
+                usdtbalance: '0.00000000',
+                solbalance: '0.00000000',
+                trxbalance: '0.00000000',
+                maticbalance: '0.00000000',
+            });
+        }
