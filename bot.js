@@ -67,7 +67,7 @@ const casinomenu = {
     inline_keyboard: [
       [{ text: 'Coin Flip 🪙', callback_data: 'coinflipopen' }],
       [{ text: 'TG Dart 🎯', callback_data: 'dartopen' }],
-      [{ text: 'Basketball 🏀', callback_data: 'basketopen'}]
+      [{ text: 'Basketball 🏀', callback_data: 'basketopen'}],
       [{ text: 'TG Slot 🎰 (Hot 🔥)', callback_data: 'slotopen' }],
       [{ text: '< Back', callback_data: 'backtomainmenu' }],
     ]
@@ -319,6 +319,8 @@ bot.on('callback_query', async (callbackQuery) => {
     const messageId = message.message_id;
     const first_name = callbackQuery.from.first_name;
     const key = `duckplays:users:${userId}`;
+    bot.answerCallbackQuery(callbackQuery.id)
+
     try {
         // Immediately acknowledge the callback query to keep the bot responsive
         await bot.answerCallbackQuery(callbackQuery.id);
